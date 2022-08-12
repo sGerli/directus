@@ -42,6 +42,12 @@ RUN : \
 
 FROM node:18-alpine AS runtime
 
+RUN \
+  apk upgrade --no-cache && apk add --no-cache \
+  git
+
+RUN wget -qO- https://get.pnpm.io/install.sh | env PNPM_VERSION=8.6.12 ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
+
 USER node
 
 WORKDIR /directus
