@@ -44,6 +44,12 @@ ENV \
 	NODE_ENV="production" \
 	NPM_CONFIG_UPDATE_NOTIFIER="false"
 
+RUN \
+  apk upgrade --no-cache && apk add --no-cache \
+  git
+
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
+
 COPY --from=builder --chown=node:node /directus/dist .
 
 USER node

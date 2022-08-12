@@ -142,6 +142,9 @@ importers:
       '@directus/utils':
         specifier: workspace:*
         version: link:../packages/utils
+      '@ffprobe-installer/ffprobe':
+        specifier: ^1.2.0
+        version: 1.2.0
       '@godaddy/terminus':
         specifier: 4.11.2
         version: 4.11.2
@@ -217,6 +220,9 @@ importers:
       fast-redact:
         specifier: 3.1.2
         version: 3.1.2
+      ffprobe:
+        specifier: ^1.1.2
+        version: 1.1.2
       flat:
         specifier: 5.0.2
         version: 5.0.2
@@ -441,6 +447,9 @@ importers:
       '@types/fast-redact':
         specifier: 3.0.2
         version: 3.0.2
+      '@types/ffprobe':
+        specifier: ^1.1.2
+        version: 1.1.2
       '@types/flat':
         specifier: 5.0.2
         version: 5.0.2
@@ -4325,6 +4334,74 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
+  /@ffprobe-installer/darwin-x64@5.0.0:
+    resolution: {integrity: sha512-Zl0UkZ+wW/eyMKBPLTUCcNQch2VDnZz/cBn1DXv3YtCBVbYd9aYzGj4MImdxgWcoE0+GpbfbO6mKGwMq5HCm6A==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/ffprobe@1.2.0:
+    resolution: {integrity: sha512-hAcr1Nz3u79MZCExqyIzzimwq5NFWb9WfDo2ZSuHNrPRCqC2PKHeKW/gsrjBKN2lXGwvtFVRvK0AN20bNR3cBg==}
+    optionalDependencies:
+      '@ffprobe-installer/darwin-x64': 5.0.0
+      '@ffprobe-installer/linux-arm': 5.0.0
+      '@ffprobe-installer/linux-arm64': 5.0.0
+      '@ffprobe-installer/linux-ia32': 5.0.0
+      '@ffprobe-installer/linux-x64': 5.0.0
+      '@ffprobe-installer/win32-ia32': 5.0.0
+      '@ffprobe-installer/win32-x64': 5.0.0
+    dev: false
+
+  /@ffprobe-installer/linux-arm64@5.0.0:
+    resolution: {integrity: sha512-IwFbzhe1UydR849YXLPP0RMpHgHXSuPO1kznaCHcU5FscFBV5gOZLkdD8e/xrcC8g/nhKqy0xMjn5kv6KkFQlQ==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/linux-arm@5.0.0:
+    resolution: {integrity: sha512-mM1PPxP2UX5SUvhy0urcj5U8UolwbYgmnXA/eBWbW78k6N2Wk1COvcHYzOPs6c5yXXL6oshS2rZHU1kowigw7g==}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/linux-ia32@5.0.0:
+    resolution: {integrity: sha512-c3bWlWEDMST59SAZycVh0oyc2eNS/CxxeRjoNryGRgqcZX3EJWJJQL1rAXbpQOMLMi8to1RqnmMuwPJgLLjjUA==}
+    cpu: [ia32]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/linux-x64@5.0.0:
+    resolution: {integrity: sha512-zgLnWJFvMGCaw1txGtz84sMEQt6mQUzdw86ih9S/kZOWnp06Gj/ams/EXxEkAxgAACCVM6/O0mkDe/6biY5tgA==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/win32-ia32@5.0.0:
+    resolution: {integrity: sha512-NnDdAZD6ShFXzJeCkAFl2ZjAv7GcJWYudLA+0T/vjZwvskBop+sq1PGfdmVltfFDcdQiomoThRhn9Xiy9ZC71g==}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@ffprobe-installer/win32-x64@5.0.0:
+    resolution: {integrity: sha512-P4ZMRFxVMnfMsOyTfBM/+nkTodLeOUfXNPo+X1bKEWBiZxRErqX/IHS5sLA0yAH8XmtKZcL7Cu6M26ztGcQYxw==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@fortawesome/fontawesome-common-types@0.2.36:
     resolution: {integrity: sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==}
     engines: {node: '>=6'}
@@ -5599,7 +5676,7 @@ packages:
       '@storybook/csf-plugin': 7.0.0-rc.4
       '@storybook/csf-tools': 7.0.0-rc.4
       '@storybook/global': 5.0.0
-      '@storybook/mdx2-csf': 1.0.0-next.6
+      '@storybook/mdx2-csf': 1.0.0-next.8
       '@storybook/node-logger': 7.0.0-rc.4
       '@storybook/postinstall': 7.0.0-rc.4
       '@storybook/preview-api': 7.0.0-rc.4
@@ -5664,7 +5741,7 @@ packages:
     dependencies:
       '@storybook/client-logger': 7.0.0-rc.4
       '@storybook/core-events': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
       '@storybook/preview-api': 7.0.0-rc.4
@@ -5785,7 +5862,7 @@ packages:
       '@storybook/client-logger': 7.0.0-rc.4
       '@storybook/components': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
       '@storybook/core-events': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/docs-tools': 7.0.0-rc.4
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
@@ -5856,7 +5933,7 @@ packages:
       '@storybook/client-logger': 7.0.0-rc.4
       '@storybook/core-common': 7.0.0-rc.4
       '@storybook/csf-plugin': 7.0.0-rc.4
-      '@storybook/mdx2-csf': 1.0.0-next.6
+      '@storybook/mdx2-csf': 1.0.0-next.8
       '@storybook/node-logger': 7.0.0-rc.4
       '@storybook/preview': 7.0.0-rc.4
       '@storybook/preview-api': 7.0.0-rc.4
@@ -5968,7 +6045,7 @@ packages:
       '@babel/core': 7.21.3
       '@babel/preset-env': 7.20.2(@babel/core@7.21.3)
       '@babel/types': 7.21.3
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/csf-tools': 7.0.0-rc.4
       '@storybook/node-logger': 7.0.0-rc.4
       '@storybook/types': 7.0.0-rc.4
@@ -5989,7 +6066,7 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@storybook/client-logger': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/global': 5.0.0
       '@storybook/theming': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
       '@storybook/types': 7.0.0-rc.4
@@ -6046,9 +6123,9 @@ packages:
       '@storybook/builder-manager': 7.0.0-rc.4
       '@storybook/core-common': 7.0.0-rc.4
       '@storybook/core-events': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/csf-tools': 7.0.0-rc.4
-      '@storybook/docs-mdx': 0.0.1-next.6
+      '@storybook/docs-mdx': 0.0.1-next.7
       '@storybook/global': 5.0.0
       '@storybook/manager': 7.0.0-rc.4
       '@storybook/node-logger': 7.0.0-rc.4
@@ -6107,7 +6184,7 @@ packages:
       '@babel/parser': 7.21.3
       '@babel/traverse': 7.21.3
       '@babel/types': 7.21.3
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/types': 7.0.0-rc.4
       fs-extra: 11.1.0
       recast: 0.23.1
@@ -6116,14 +6193,14 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/csf@0.0.2-next.10:
-    resolution: {integrity: sha512-m2PFgBP/xRIF85VrDhvesn9ktaD2pN3VUjvMqkAL/cINp/3qXsCyI81uw7N5VEOkQAbWrY2FcydnvEPDEdE8fA==}
+  /@storybook/csf@0.0.2-next.11:
+    resolution: {integrity: sha512-xGt0YSVxZb43sKmEf1GIQD8xEbo+c+S6khDEL7Qu/pYA0gh5z3WUuhOlovnelYj/YJod+XRsfVvk23AaRfUJ4Q==}
     dependencies:
       type-fest: 2.19.0
     dev: true
 
-  /@storybook/docs-mdx@0.0.1-next.6:
-    resolution: {integrity: sha512-DjoSIXADmLJtdroXAjUotFiZlcZ2usWhqrS7aeOtZs0DVR0Ws5WQjnwtpDUXt8gryTSd+OZJ0cNsDcqg4JDEvQ==}
+  /@storybook/docs-mdx@0.0.1-next.7:
+    resolution: {integrity: sha512-JbgBf/EMBtx65iXtB3pOiX3818UeL9jZ+KAY241OAPqJVXjMQ5KaVOdg/57MSmd508HDIGx7CiImOMEmWwQ9/g==}
     dev: true
 
   /@storybook/docs-tools@7.0.0-rc.4:
@@ -6153,7 +6230,7 @@ packages:
       '@storybook/channels': 7.0.0-rc.4
       '@storybook/client-logger': 7.0.0-rc.4
       '@storybook/core-events': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/global': 5.0.0
       '@storybook/router': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
       '@storybook/theming': 7.0.0-rc.4(react-dom@18.2.0)(react@18.2.0)
@@ -6173,8 +6250,8 @@ packages:
     resolution: {integrity: sha512-prLxXsCevw5ghWKvS7uAYdMOJ2Cr7jxE4Z1h9OSpVVombiUaU9iFPpNCsfY40VNVi9WuEHSTWH7QV/g453nGiw==}
     dev: true
 
-  /@storybook/mdx2-csf@1.0.0-next.6:
-    resolution: {integrity: sha512-m6plojocU/rmrqWd26yvm8D+oHZPZ6PtSSFmZIgpNDEPVmc8s4fBD6LXOAB5MiPI5f8KLUr2HVhOMZ97o5pDTw==}
+  /@storybook/mdx2-csf@1.0.0-next.8:
+    resolution: {integrity: sha512-t2O5s/HHTH5evZVHgVtCWTZgMZ/CaqDu3xVGgjVbKeTvpPAbi0Waab5SSX8T9PG5jNDei/x+jpAVCcNMOHoWzg==}
     dev: true
 
   /@storybook/node-logger@7.0.0-beta.52:
@@ -6206,7 +6283,7 @@ packages:
       '@storybook/channels': 7.0.0-rc.4
       '@storybook/client-logger': 7.0.0-rc.4
       '@storybook/core-events': 7.0.0-rc.4
-      '@storybook/csf': 0.0.2-next.10
+      '@storybook/csf': 0.0.2-next.11
       '@storybook/global': 5.0.0
       '@storybook/types': 7.0.0-rc.4
       '@types/qs': 6.9.7
@@ -6617,6 +6694,10 @@ packages:
 
   /@types/fast-redact@3.0.2:
     resolution: {integrity: sha512-VQ8OBFBFnGT9hGbeBOzKrtHQYev7HN72tsD/7kxQ+/2tQ5PS9cifUOxT8Z42O6iNJK5QPN6IsFm7DNMw6Uq2SQ==}
+    dev: true
+
+  /@types/ffprobe@1.1.2:
+    resolution: {integrity: sha512-IWzp4Kc8vwXPTTIDurrlneubzmYP7nce1WdmvAl0TG+3LrMGCsQ3IxSiM8tnF4wwkTUUZ2Dsknt3wNlncrrmtA==}
     dev: true
 
   /@types/file-saver@2.0.5:
@@ -7473,6 +7554,14 @@ packages:
       esbuild: 0.16.17
       tslib: 2.5.0
     dev: true
+
+  /JSONStream@1.3.5:
+    resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}
+    hasBin: true
+    dependencies:
+      jsonparse: 1.3.1
+      through: 2.3.8
+    dev: false
 
   /JSV@4.0.2:
     resolution: {integrity: sha512-ZJ6wx9xaKJ3yFUhq5/sk82PJMuUyLk277I8mQeyDgCTjGdjWJIvPfaU5LIXaMuaN2UO1X3kZH4+lgphublZUHw==}
@@ -9327,6 +9416,12 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /deferential@1.0.0:
+    resolution: {integrity: sha512-QyFNvptDP8bypD6WK6ZOXFSBHN6CFLZmQ59QyvRGDvN9+DoX01mxw28QrJwSVPrrwnMWqHgTRiXybH6Y0cBbWw==}
+    dependencies:
+      native-promise-only: 0.8.1
+    dev: false
+
   /define-lazy-prop@2.0.0:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
     engines: {node: '>=8'}
@@ -10292,6 +10387,14 @@ packages:
   /fetch-retry@5.0.3:
     resolution: {integrity: sha512-uJQyMrX5IJZkhoEUBQ3EjxkeiZkppBd5jS/fMTJmfZxLSiaQjv2zD0kTvuvkSH89uFvgSlB6ueGpjD3HWN7Bxw==}
     dev: true
+
+  /ffprobe@1.1.2:
+    resolution: {integrity: sha512-a+oTbhyeM7Z8PRy+mpzmVUAnATZT7z4BO94HSKeqHupdmjiKZ1djzcZkyoyXA21zCOCG7oVRrsBMmvvtmzoz4g==}
+    dependencies:
+      JSONStream: 1.3.5
+      bl: 4.1.0
+      deferential: 1.0.0
+    dev: false
 
   /figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
@@ -13616,7 +13719,6 @@ packages:
 
   /native-promise-only@0.8.1:
     resolution: {integrity: sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg==}
-    dev: true
 
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}

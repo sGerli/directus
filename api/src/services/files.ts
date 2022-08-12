@@ -3,6 +3,9 @@ import encodeURL from 'encodeurl';
 import exif from 'exif-reader';
 import { parse as parseIcc } from 'icc';
 import { clone, pick } from 'lodash';
+import ffprobe from 'ffprobe';
+import { file } from 'tmp-promise';
+import * as fs from 'fs';
 import { extension } from 'mime-types';
 import type { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
@@ -103,6 +106,43 @@ export class FilesService extends ItemsService {
 			payload.title ??= title ?? null;
 			payload.tags ??= tags ?? null;
 			payload.metadata ??= metadata ?? null;
+		}
+
+		const audioVideoMimetypes = [
+			'video/avi',
+			'video/quicktime',
+			'video/mpeg',
+			'video/mp4',
+			'video/ogg',
+			'video/x-matroska',
+			'video/webm',
+			'audio/mpeg',
+			'audio/mp3',
+			'audio/ogg',
+			'audio/wav',
+			'audio/x-wav',
+		];
+
+		if (audioVideoMimetypes.includes(payload.type)) {
+			const ffprobeStatic = require('@ffprobe-installer/ffprobe');
+			const mediaStream = await storage.location(data.storage).read(payload.filename_disk);
+			const { path, cleanup } = await file();
+			const tempFileWriteStream = fs.createWriteStream(path);
+			await pipeline(mediaStream, tempFileWriteStream);
+			const probe = await ffprobe(path, { path: ffprobeStatic.path });
+			cleanup();
+			if (probe.streams.length > 0) {
+				if (probe.streams[0]?.duration) {
+					payload.duration = Math.round(probe.streams[0].duration * 1000);
+				}
+				for (const stream of probe.streams) {
+					if (stream.width && stream.height) {
+						payload.width = stream.width;
+						payload.height = stream.height;
+						break;
+					}
+				}
+			}
 		}
 
 		// We do this in a service without accountability. Even if you don't have update permissions to the file,
