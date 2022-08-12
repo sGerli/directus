@@ -41,6 +41,7 @@ RUN \
   tzdata \
   # Create directory for Directus with corresponding ownership
   # (can be omitted on newer Docker versions since WORKDIR below will do the same)
+  git \
   && mkdir /directus && chown node:node /directus
 
 # Switch to user 'node' and directory '/directus'
